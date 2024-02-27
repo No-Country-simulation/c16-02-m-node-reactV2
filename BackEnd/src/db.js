@@ -35,8 +35,9 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries)
 
 //*========================  Modelos Importados  ===========================//
-
+const { User, Event } = sequelize.models
 //*========================  Relaciones de las tablas  ===========================//
+User.hasMany(Event, { as: 'Favoritos', foreignKey: 'userId' });
 
 module.exports = {
     ...sequelize.models,
