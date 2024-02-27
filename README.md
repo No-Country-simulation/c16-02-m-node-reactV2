@@ -61,3 +61,9 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 
 </table>
 
+<h2>Agredecemos por la oportunidad a:</h2>
+<div align='center'>
+  <a href="https://www.nocountry.tech/" target="_blank">
+    <img style='background-color:black;' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200">
+  </a>
+</div>
