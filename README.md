@@ -1,46 +1,63 @@
-Club Festival 2024
+<b>Club Festival 2024</b>
 
 Club Festival 2024 es un sitio web creado para que los usuarios puedan ver los festivales que se realizan durante el año de las bandas y artistas más escuchados.
 
-Tecnologías utilizadas
+<b>Tecnologías utilizadas</b>
 
-FRONT-END:
+<b>FRONT-END:</b>
 
-Next.js: es un marco de trabajo que permite a los desarrolladores crear aplicaciones de página única y aplicaciones web de alto rendimiento a través de la renderización del lado del servidor.
+<em>Next.js:</em> es un marco de trabajo que permite a los desarrolladores crear aplicaciones de página única y aplicaciones web de alto rendimiento a través de la renderización del lado del servidor.
 
-Tailwind: es un framework de CSS de código abierto​ para el diseño de páginas web.
+<em>Tailwind:</em> es un framework de CSS de código abierto​ para el diseño de páginas web.
 
-Redux Toolkit: es un conjunto de herramientas oficiales de Redux que simplifican la configuración de una aplicación Redux. 
+<em>Redux Toolkit:</em> es un conjunto de herramientas oficiales de Redux que simplifican la configuración de una aplicación Redux. 
 Proporciona una API simplificada para crear acciones y reducers, y también incluye la capacidad de generar automáticamente el código de una acción o de un reducer.
 
-BACK-END
+<b>BACK-END:</b>
 
-PostgreSQL: es un sistema o motor de bases de datos compatible con los servicios de OVHcloud y la mayoría de las herramientas más populares del mercado. Es compatible con diversos modelos de datos para crear aplicaciones orientadas a objetos, potentes y escalables.
+<em>PostgreSQL:</em> es un sistema o motor de bases de datos compatible con los servicios de OVHcloud y la mayoría de las herramientas más populares del mercado. Es compatible con diversos modelos de datos para crear aplicaciones orientadas a objetos, potentes y escalables.
 
-Express: es un entorno de trabajo para aplicaciones web para el programario Node.js, de código abierto y con licencia MIT. Se utiliza para desarrollar aplicaciones web y APIs.
+<em>Express:</em> es un entorno de trabajo para aplicaciones web para el programario Node.js, de código abierto y con licencia MIT. Se utiliza para desarrollar aplicaciones web y APIs.
 
-Sequelize: es un ORM para Nodejs que te permite agilizar bastante los desarrollos que incluyan bases de datos relacionales como MySQL o Postgress.
+<em>Sequelize:</em> es un ORM para Nodejs que te permite agilizar bastante los desarrollos que incluyan bases de datos relacionales como MySQL o Postgress.
 
-Node.js: sirve para crear sitios web dinámicos muy eficientes, escritos con el lenguaje de programación JavaScript.
+<em>Node.js:</em> sirve para crear sitios web dinámicos muy eficientes, escritos con el lenguaje de programación JavaScript.
 
-DISEÑO
+<b>DISEÑO</b>
 
-Figma: un programa de edición gráfica y prototipado. Una plataforma que se utiliza principalmente para el diseño digital, es decir, para diseñar páginas web e interfaces de aplicaciones.
 
-Características principales
+<em>Figma:</em> un programa de edición gráfica y prototipado. Una plataforma que se utiliza principalmente para el diseño digital, es decir, para diseñar páginas web e interfaces de aplicaciones.
+
+<b>Características principales</b>
 1. Registro de usuario
 2. Fecha y lugar de cuándo y dónde tocan los artistas y bandas
 3. Información de los artistas y bandas 
 4. Guardar eventos
 5. Reproducir canciones más escuchadas de los artistas y las bandas
 
-Equipo
+<b>Integrantes del proyecto</b>
 
-Sol Abigail Rázuri Fiorilli: Front-end 
+<table>
 
-Roberto Zaracho: Back-end
+  <tr>
+  <td>Equipo</td>
+  <td>Rol</td>
 
-Malena Montenegro: Diseñadora UX/UI
+  <tr>
+<td>Sol Abigail Rázuri Fiorilli</td>
+  <td>Front-end</td>
+</tr>
 
+<tr>
+  <td>Roberto Zaracho</td>
+  <td>Back-end</td>
+</tr>
+
+<tr>
+  <td>Malena Montenegro</td>
+  <td>Diseñadora UX/UI</td>
+</tr>
+
+</table>
 
 
