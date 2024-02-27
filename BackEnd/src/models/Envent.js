@@ -33,7 +33,12 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.JSONB),
       allowNull: true,
     },
+    eliminado: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false, // Valor por defecto: no eliminado
+    },
   }, {
-    timestamps: true,
+    timestamps: false,
   });
 };

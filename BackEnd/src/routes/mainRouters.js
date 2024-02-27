@@ -1,9 +1,9 @@
-const { Router } = require ("express")
+const { Router } = require("express")
+
+const eventRouter = require("../routes/Event/event.routes")
 
 const mainRouter = Router()
 
-mainRouter.get("/", (req, res) => {
-    res.json("Funcionando correctamente!")
-})
+mainRouter.use("/event", eventRouter)
 
 module.exports = mainRouter
