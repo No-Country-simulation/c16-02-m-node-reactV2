@@ -37,7 +37,7 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 - Reproducir canciones más escuchadas de los artistas y las bandas.
 
 <h2><b>Integrantes del proyecto</b></h2>
-
+<div align='center'>
 <table>
 
   <tr>
@@ -60,6 +60,7 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 </tr>
 
 </table>
+</div>
 
 <h2>Agredecemos por la oportunidad a:</h2>
 <div align='center'>
