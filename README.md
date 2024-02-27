@@ -23,12 +23,13 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 
 <em>Node.js:</em> sirve para crear sitios web dinámicos muy eficientes, escritos con el lenguaje de programación JavaScript.
 
-<b>DISEÑO</b>
+<b>Diseño</b>
 
 
 <em>Figma:</em> un programa de edición gráfica y prototipado. Una plataforma que se utiliza principalmente para el diseño digital, es decir, para diseñar páginas web e interfaces de aplicaciones.
 
 <b>Características principales</b>
+
 1. Registro de usuario
 2. Fecha y lugar de cuándo y dónde tocan los artistas y bandas
 3. Información de los artistas y bandas 
@@ -36,6 +37,7 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 5. Reproducir canciones más escuchadas de los artistas y las bandas
 
 <b>Integrantes del proyecto</b>
+
 
 <table>
 
