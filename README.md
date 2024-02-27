@@ -1,10 +1,9 @@
-<b>Club Festival 2024</b>
-<hr>
+<h2><b>Club Festival 2024</b></h2>
+
 
 Club Festival 2024 es un sitio web creado para que los usuarios puedan ver los festivales que se realizan durante el año de las bandas y artistas más escuchados.
 
-<b>Tecnologías utilizadas</b>
-<hr>
+<h2><b>Tecnologías utilizadas</b></h2
 
 <b>FRONT-END:</b>
 
@@ -25,26 +24,19 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 
 <em>Node.js:</em> sirve para crear sitios web dinámicos muy eficientes, escritos con el lenguaje de programación JavaScript.
 
-<b>Diseño</b>
-<hr>
+<h2><b>Diseño</b></h2>
 
 <em>Figma:</em> un programa de edición gráfica y prototipado. Una plataforma que se utiliza principalmente para el diseño digital, es decir, para diseñar páginas web e interfaces de aplicaciones.
 
-<b>Características principales</b>
-<hr>
+<h2><b>Características principales</b></h2>
 
- 1. Registro de usuario.
+- Registro de usuario.
+- Fecha y lugar de cuándo y dónde tocan los artistas y bandas.
+- Información de los artistas y bandas.
+- Guardar eventos.
+- Reproducir canciones más escuchadas de los artistas y las bandas.
 
-2. Fecha y lugar de cuándo y dónde tocan los artistas y bandas.
-
-3. Información de los artistas y bandas. 
-
-4. Guardar eventos.
-
-5. Reproducir canciones más escuchadas de los artistas y las bandas.
-
-<b>Integrantes del proyecto</b>
-<hr>
+<h2><b>Integrantes del proyecto</b></h2>
 
 <table>
 
