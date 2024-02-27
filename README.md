@@ -1,5 +1,7 @@
-<h2><b>Club Festival 2024</b></h2>
-
+  <h2><div align='center'
+<b>Club Festival 2024</b>
+</div>
+</h2>
 
 Club Festival 2024 es un sitio web creado para que los usuarios puedan ver los festivales que se realizan durante el año de las bandas y artistas más escuchados.
 
