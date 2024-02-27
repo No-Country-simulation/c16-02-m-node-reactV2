@@ -26,7 +26,12 @@ module.exports = (sequelize) => {
             type: DataTypes.ARRAY(DataTypes.UUID),
             allowNull: true,
         },
+        eliminado: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
     }, {
-        timestamps: true,
+        timestamps: false,
     });
 };
