@@ -8,10 +8,8 @@ import Link from 'next/link';
 
 
 const LoginPage = () => {
-  // Estado para controlar la visibilidad de la contraseña
   const [showPassword, setShowPassword] = useState(false);
 
-  // Función para alternar la visibilidad de la contraseña
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
