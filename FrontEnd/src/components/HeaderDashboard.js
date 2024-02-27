@@ -5,14 +5,13 @@ import { FiArrowLeft } from 'react-icons/fi';
 const DashboardHeader = () => {
   return (
     <header className="flex justify-between items-center bg-gray-50 shadow-md p-4">
-      <div className="flex items-center">
+      <div className="flex justify-between items-center w-full">
       <div className="text-xl font-bold mr-10">
-        {/* Enlace con la flecha que redirige al dashboard */}
         <Link href="/dashboard">
-            <FiArrowLeft /> {/* Ícono de flecha izquierda */}
+            <FiArrowLeft />
         </Link>
       </div>
-        <div className="mr-4 relative">
+        {/* <div className="mr-4 relative">
           <input
             type="text"
             placeholder="Buscar..."
@@ -32,7 +31,7 @@ const DashboardHeader = () => {
               d="M20 20l-4.573-4.573M8 15a7 7 0 100-14 7 7 0 000 14z"
             ></path>
           </svg>
-        </div>
+        </div> */}
         <p>Bienvenido, Pedro</p>
       </div>
     </header>
