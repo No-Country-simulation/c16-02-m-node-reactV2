@@ -33,15 +33,15 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 <b>Características principales</b>
 <hr>
 
- 1. Registro de usuario
+ 1. Registro de usuario.
 
-2. Fecha y lugar de cuándo y dónde tocan los artistas y bandas
+2. Fecha y lugar de cuándo y dónde tocan los artistas y bandas.
 
-3. Información de los artistas y bandas 
+3. Información de los artistas y bandas. 
 
-4. Guardar eventos
+4. Guardar eventos.
 
-5. Reproducir canciones más escuchadas de los artistas y las bandas
+5. Reproducir canciones más escuchadas de los artistas y las bandas.
 
 <b>Integrantes del proyecto</b>
 <hr>
