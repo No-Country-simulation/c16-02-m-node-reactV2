@@ -7,14 +7,15 @@ const createUser = async (req, res) => {
   try {
     const {
       nombre,
+      apellido,
       email,
       password,
       favoritos,
     } = req.body;
 
     // Validaciones
-    if (!nombre || !email || !password) {
-      throw new Error("El nombre, correo electrónico y contraseña son obligatorios");
+    if (!nombre || !apellido || !email || !password) { 
+      throw new Error("El nombre, apellido, correo electrónico y contraseña son obligatorios");
     }
 
     const userExists = await User.findOne({
@@ -31,12 +32,12 @@ const createUser = async (req, res) => {
     const newUser = await User.create({
       id: uuidv4(),
       nombre,
+      apellido,
       email,
       password: hashedPassword,
       favoritos,
     });
 
-    // Generar token JWT
     const token = jwt.sign(
       {
         userId: newUser.id,
@@ -47,6 +48,7 @@ const createUser = async (req, res) => {
     );
 
     res.status(201).json({ user: newUser, token });
+    
   } catch (error) {
     console.error(error);
     res
