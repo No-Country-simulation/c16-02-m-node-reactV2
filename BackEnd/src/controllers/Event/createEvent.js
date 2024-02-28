@@ -3,7 +3,6 @@ const { Event } = require("../../db");
 
 const createEventController = async (data) => {
   try {
-    // Verificar si la fecha de creación está presente, de lo contrario, establecerla en la fecha actual
     data.fecha_creacion = data.fecha_creacion || new Date();
 
     // Convertir la fecha al formato adecuado
@@ -15,7 +14,6 @@ const createEventController = async (data) => {
         // Si se puede analizar, conviértela al formato 'YYYY-MM-DD'
         fecha = new Date(parsedDate).toISOString().split('T')[0];
       } else {
-        // Si no se puede analizar, asume que ya está en el formato correcto
         fecha = new Date(fecha).toISOString().split('T')[0];
       }
     }
@@ -32,8 +30,9 @@ const createEventController = async (data) => {
   }
 };
 
+
 const createEvent = async (req, res) => {
-  const { nombre, fecha, descripcion, imagen, historia, redes } = req.body;
+  const { nombre, fecha, descripcion, imagen, historia, redes, integrantes } = req.body;
 
   // Verificar si los campos obligatorios están presentes
   if (!nombre || !fecha || !descripcion) {
@@ -49,6 +48,7 @@ const createEvent = async (req, res) => {
       imagen,
       historia,
       redes,
+      integrantes
     });
 
     res.status(200).json(createdEvent);

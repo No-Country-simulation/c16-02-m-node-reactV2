@@ -1,4 +1,3 @@
-// models/event.js
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -33,10 +32,14 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.JSONB),
       allowNull: true,
     },
+    integrantes: {
+      type: DataTypes.ARRAY(DataTypes.JSONB),
+      allowNull: true,
+    },
     eliminado: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false, // Valor por defecto: no eliminado
+      defaultValue: false,
     },
   }, {
     timestamps: false,
