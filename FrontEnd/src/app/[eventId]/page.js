@@ -3,60 +3,33 @@
 import DashboardHeader from '@/components/HeaderDashboard'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 
 function page() {
   const [activeTab, setActiveTab] = useState('integrantes')
+  const [favoritos, setFavoritos] = useState(true)
 
   const handleTabChange = (tab) => {
     setActiveTab(tab)
   }
 
-  const handleCardClick = (cardInfo) => {
-    setSelectedCardInfo(cardInfo)
-  }
-
-  // Objeto de datos de prueba para cada card
-  const cardsData = {
-    integrantes: [
-      { id: 1, name: 'Integrante 1' },
-      { id: 2, name: 'Integrante 2' },
-      { id: 3, name: 'Integrante 3' },
-      { id: 4, name: 'Integrante 4' },
-    ],
-    historia: [
-      { id: 1, description: 'Descripción de la historia 1' },
-      { id: 2, description: 'Descripción de la historia 2' },
-      { id: 3, description: 'Descripción de la historia 3' },
-      { id: 4, description: 'Descripción de la historia 4' },
-    ],
-    imagenes: [
-      { id: 1, image: '/la-beriso.png' },
-      { id: 2, image: '/la-beriso.png' },
-      { id: 3, image: '/la-beriso.png' },
-      { id: 4, image: '/la-beriso.png' },
-    ],
-    redes: [
-      { id: 1, red: 'instagram' },
-      { id: 2, red: 'facebook' },
-      { id: 3, red: 'twitter' },
-      { id: 4, red: 'tiktok' },
-    ],
-  }
-
-  const [favoritos, setFavoritos] = useState(true)
-
   const handleFav = () => {
     setFavoritos(!favoritos)
   }
+
+  const searchParams = useSearchParams();
+  const event = searchParams.get('event')
+  const results = JSON.parse(event)
+  console.log(results);
 
   return (
     <div>
       <DashboardHeader />
       <div className="flex flex-col items-center mt-5">
         <div className="flex justify-between w-4/5 mb-5">
-          <h1 className="text-3xl font-bold mb-4">Título del Evento</h1>
+          <h1 className="text-3xl font-bold mb-4">{results.nombre}</h1>
           <button
             className="mt-2 flex items-center text-gray-500"
             onClick={handleFav}
@@ -78,7 +51,7 @@ function page() {
           />
         </div>
         <div className="mt-8 text-lg text-gray-700">
-          <p>Descripción del evento...</p>
+          <p>{results.descripcion}</p>
         </div>
         <div className="mt-8">
           <audio controls className="w-full max-w-4xl">
@@ -87,7 +60,6 @@ function page() {
           </audio>
         </div>
       </div>
-      {/* NUEVO TAB */}
       <div className="w-full bg-gray-200 rounded-lg flex justify-center items-center mt-10">
         <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
           <ul className="flex flex-wrap -mb-px">
@@ -167,30 +139,7 @@ function page() {
             {activeTab === 'historia' && (
               <div className="flex flex-col justify-center items-center w-full h-full">
                 <p className="text-sm text-gray-600 text-center">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Quod, minus libero sunt natus omnis excepturi ipsam blanditiis
-                  repellendus, dignissimos ipsa non cupiditate. Ratione,
-                  obcaecati tempora! Provident accusamus minus error quae? Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                  veritatis? Dolorum consequatur iusto obcaecati aspernatur quam
-                  iure sunt nemo praesentium cumque dicta! Alias animi
-                  repudiandae dolorum optio quidem culpa repellendus.Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Quod, minus
-                  libero sunt natus omnis excepturi ipsam blanditiis
-                  repellendus, dignissimos ipsa non cupiditate. Ratione,
-                  obcaecati tempora! Provident accusamus minus error quae? Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                  veritatis? Dolorum consequatur iusto obcaecati aspernatur quam
-                  iure sunt nemo praesentium cumque dicta! Alias animi
-                  repudiandae dolorum optio quidem culpa repellendus. Lorem
-                  ipsum dolor sit amet consectetur, adipisicing elit. Quod,
-                  minus libero sunt natus omnis excepturi ipsam blanditiis
-                  repellendus, dignissimos ipsa non cupiditate. Ratione,
-                  obcaecati tempora! Provident accusamus minus error quae? Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                  veritatis? Dolorum consequatur iusto obcaecati aspernatur quam
-                  iure sunt nemo praesentium cumque dicta! Alias animi
-                  repudiandae dolorum optio quidem culpa repellendus.
+                {results.historia}
                 </p>
               </div>
             )}
@@ -216,32 +165,14 @@ function page() {
               ))}
             {activeTab === 'redes' && (
               <div className="flex flex-col justify-center items-center w-full h-full">
-                <h3>Titulo</h3>
                 <p className="text-sm text-gray-600 text-center">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Quod, minus libero sunt natus omnis excepturi ipsam blanditiis
-                  repellendus, dignissimos ipsa non cupiditate. Ratione,
-                  obcaecati tempora! Provident accusamus minus error quae? Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                  veritatis? Dolorum consequatur iusto obcaecati aspernatur quam
-                  iure sunt nemo praesentium cumque dicta! Alias animi
-                  repudiandae dolorum optio quidem culpa repellendus.Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Quod, minus
-                  libero sunt natus omnis excepturi ipsam blanditiis
-                  repellendus, dignissimos ipsa non cupiditate. Ratione,
-                  obcaecati tempora! Provident accusamus minus error quae? Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                  veritatis? Dolorum consequatur iusto obcaecati aspernatur quam
-                  iure sunt nemo praesentium cumque dicta! Alias animi
-                  repudiandae dolorum optio quidem culpa repellendus. Lorem
-                  ipsum dolor sit amet consectetur, adipisicing elit. Quod,
-                  minus libero sunt natus omnis excepturi ipsam blanditiis
-                  repellendus, dignissimos ipsa non cupiditate. Ratione,
-                  obcaecati tempora! Provident accusamus minus error quae? Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                  veritatis? Dolorum consequatur iusto obcaecati aspernatur quam
-                  iure sunt nemo praesentium cumque dicta! Alias animi
-                  repudiandae dolorum optio quidem culpa repellendus.
+                {results.redes[0]}
+                </p>
+                <p className="text-sm text-gray-600 text-center">
+                {results.redes[1]}
+                </p>
+                <p className="text-sm text-gray-600 text-center">
+                {results.redes[2]}
                 </p>
               </div>
             )}
