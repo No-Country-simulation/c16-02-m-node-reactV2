@@ -21,6 +21,9 @@ const loginUser = async (req, res) => {
         const payload = {
             user: {
                 id: user.id,
+                nombre: user.name, 
+                apellido: user.apellido,
+                favoritos: user.favoritos,
                 email: user.email
                 // Puedes incluir más datos del usuario en el token si lo deseas
             }
