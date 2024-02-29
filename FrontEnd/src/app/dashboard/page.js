@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/navigation';
 
 function page() {
   const [activeTab, setActiveTab] = useState('marzo')
@@ -41,7 +42,7 @@ const eventosFiltrados = events.filter((evento) => {
     <div>
        <header className="flex justify-between items-center bg-gray-50 shadow-md p-4">
       <div className="flex justify-end items-center w-full">
-        <p>Bienvenido, Pedro</p>
+        <p>Bienvenido</p>
       </div>
     </header>
       <div className="flex flex-col items-start p-8">
