@@ -1,12 +1,12 @@
 'use client'
 
-import DashboardHeader from '@/components/HeaderDashboard'
 import { fetchEventos } from '@/redux/features/eventSlice'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/navigation';
 
 function page() {
   const [activeTab, setActiveTab] = useState('marzo')
@@ -40,7 +40,11 @@ const eventosFiltrados = events.filter((evento) => {
 
   return (
     <div>
-      <DashboardHeader />
+       <header className="flex justify-between items-center bg-gray-50 shadow-md p-4">
+      <div className="flex justify-end items-center w-full">
+        <p>Bienvenido</p>
+      </div>
+    </header>
       <div className="flex flex-col items-start p-8">
         <h1 className="text-3xl font-bold mb-8">Próximos festivales</h1>
 
@@ -76,21 +80,24 @@ const eventosFiltrados = events.filter((evento) => {
         </div>
         <div className="mt-8 w-full bg-red-200 h-96 rounded-lg flex justify-center items-center">
           {activeTab === 'marzo' ? (
-            <div href={'/festival'} className="flex space-x-4">
+            <div href={'/festival'} className="flex justify-center space-x-4">
               {eventosFiltrados.map((evento) => (
                 <div
                   key={evento.id}
                   className="bg-white w-1/4 p-4 rounded-lg shadow-md"
                 >
-                {/* <Link href={`/${evento.id}`}>
+                <Link href={{
+                      pathname: `/${evento.id}`,
+                      query: { event: JSON.stringify(evento)}
+                    }}>
                     <Image
-                      src={evento.imagen}
+                      src={'/la-beriso.png'}
                       alt={`${evento.nombre}`}
                       className="w-full h-32 object-cover rounded-lg mb-4"
                       width={200}
                       height={200}
                     />
-                  </Link> */}
+                  </Link>
                   <div className="flex justify-between items-baseline">
                     <Link href={{
                       pathname: `/${evento.id}`,
@@ -113,28 +120,33 @@ const eventosFiltrados = events.filter((evento) => {
                   </div>
                   <p className="text-sm text-gray-600">{evento.descripcion}</p>
                   <p className="text-sm font-medium text-gray-500">
-                    {evento.fecha}
+                    Fecha: {new Date(evento.fecha).toISOString().split('T')[0]}
                   </p>
                 </div>
               ))}
             </div>
           ) : (
-            <div href={'/festival'} className="flex space-x-4">
+            <div href={'/festival'} className="flex justify-center space-x-4">
               {eventosFiltrados.map((evento) => (
                 <div
                   key={evento.id}
                   className="bg-white w-1/4 p-4 rounded-lg shadow-md"
-                  onClick={() => handleCardClick(evento)}
                 >
-                  {/* <Link href={`/${evento.id}`}>
+                  <Link href={{
+                      pathname: `/${evento.id}`,
+                      query: { event: JSON.stringify(evento)}
+                    }}>
                   <img
-                    src={evento.imagen}
-                    alt={`Image ${index}`}
+                    src={'/la-beriso.png'}
+                    alt={`Image ${evento.id}`}
                     className="w-full h-32 object-cover rounded-lg mb-4"
                   />
-                  </Link> */}
+                  </Link>
                   <div className="flex justify-between items-baseline">
-                    <Link href={`/${evento.id}`}>
+                    <Link href={{
+                      pathname: `/${evento.id}`,
+                      query: { event: JSON.stringify(evento)}
+                    }}>
                   <h2 className="text-lg font-bold mb-2">{evento.nombre}</h2>
                     </Link>
                     <button
@@ -150,7 +162,7 @@ const eventosFiltrados = events.filter((evento) => {
                   </div>
                   <p className="text-sm text-gray-600">{evento.descripcion}</p>
                   <p className="text-sm font-medium text-gray-500">
-                    {evento.fecha}
+                      Fecha: {new Date(evento.fecha).toISOString().split('T')[0]}
                   </p>
                 </div>
               ))}

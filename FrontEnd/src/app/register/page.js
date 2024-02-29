@@ -58,6 +58,47 @@ const RegisterPage = () => {
   };
 
 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Obtener los valores del formulario
+    const nombre = e.target.elements.nombre.value;
+    const apellido = e.target.elements.apellido.value;
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+    
+    // Construir el objeto de datos a enviar al backend
+    const userData = {
+      nombre,
+      apellido,
+      email,
+      password
+    };
+
+    try {
+      // Enviar los datos al backend utilizando fetch o axios
+      const response = await fetch('http://localhost:3001/user/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        // Si la respuesta es exitosa, redirigir al usuario a la página de dashboard
+        window.location.href = '/dashboard';
+      } else {
+        // Si la respuesta es un error, mostrar un mensaje de error al usuario
+        console.error('Error al registrar el usuario');
+      }
+    } catch (error) {
+      console.error('Error al enviar los datos al backend', error);
+    }
+  };
+
+
   return (
     <div>
       <Header/>
@@ -78,22 +119,23 @@ const RegisterPage = () => {
         <h2 className="text-4xl font-bold mb-4">Club Festival</h2>
         <Image src="/logo.svg" alt="Logo" className="mb-4" width={250} height={250}/>
 
-        <form className="w-full max-w-sm flex flex-col items-center">
+        <form className="w-full max-w-sm flex flex-col items-center" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="nombre" className="block text-gray-700 font-bold mb-2">Nombre</label>
-            <input type="text" id="nombre" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
+            <input required type="text" id="nombre" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
           </div>
           <div className="mb-4">
             <label htmlFor="apellido" className="block text-gray-700 font-bold mb-2">Apellido</label>
-            <input type="text" id="apellido" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
+            <input required type="text" id="apellido" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
           </div>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
-            <input type="email" id="email" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
+            <input required type="email" id="email" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
           </div>
           <div className="mb-4 relative">
             <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Contraseña</label>
             <input
+              required
               type={showPassword ? 'text' : 'password'}
               id="password"
               className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md pr-10"
@@ -109,6 +151,7 @@ const RegisterPage = () => {
           <div className="mb-4 relative">
             <label htmlFor="confirm-password" className="block text-gray-700 font-bold mb-2">Confirmar Contraseña</label>
             <input
+              required
               type={showConfirmPassword ? 'text' : 'password'}
               id="confirm-password"
               className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md pr-10"
@@ -122,7 +165,7 @@ const RegisterPage = () => {
             </button>
           </div>
           <div className="mb-4 flex items-center">
-            <input type="checkbox" id="terms" className="mr-2" />
+            <input required type="checkbox" id="terms" className="mr-2" />
             <label htmlFor="terms" className="text-gray-700">
               He leído y acepto los&nbsp;
                <Link href="#"  onClick={handleTermsClick} className="text-blue-500">
@@ -131,11 +174,9 @@ const RegisterPage = () => {
               {showTermsModal && <TermsAndConditionsModal isOpen={true} onClose={handleCloseTermsModal} />}
             </label>
           </div>
-          <Link href="/dashboard">
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
             Registrarse
           </button>
-          </Link>
         </form>
       </div>
     </div>
