@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Image from 'next/image';
-import Link from 'next/link';
 
 
 const LoginPage = () => {
@@ -39,6 +38,12 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
+        // Si la respuesta es exitosa, obtener el nombre de usuario desde la respuest
+        const data = await response.json();
+        const { nombre } = data.user;
+        // console.log({nombre});
+        // Almacenar el nombre de usuario en localStorage
+        localStorage.setItem('userName', nombre);
         // Si la respuesta es exitosa, redirigir al usuario a la página de dashboard
         window.location.href = '/dashboard';
       } else {

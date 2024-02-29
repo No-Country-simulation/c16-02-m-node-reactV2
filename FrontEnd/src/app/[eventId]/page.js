@@ -1,5 +1,6 @@
 'use client'
 
+import Footer from '@/components/Footer'
 import DashboardHeader from '@/components/HeaderDashboard'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -163,6 +164,7 @@ function page() {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   )
 }
