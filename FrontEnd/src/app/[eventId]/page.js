@@ -116,28 +116,25 @@ function page() {
       </div>
       <div className="mt-8 w-full bg-red-200 h-96 rounded-lg flex justify-center items-center">
         {activeTab && (
-          <Link href={'/festival'} className="flex space-x-4">
+          <div className="flex justify-center space-x-4">
             {activeTab === 'integrantes' &&
-              [1, 2, 3, 4].map((index) => (
+              results.integrantes.map((evento, index) => (
                 <div
                   key={index}
                   className="bg-white w-1/4 p-4 rounded-lg shadow-md"
                 >
                   <Image
                     src={`/la-beriso.png`}
-                    alt={`Image ${index}`}
+                    alt={`Image ${evento}`}
                     className="w-full h-32 object-cover rounded-lg mb-4"
                     width={200}
                     height={200}
                   />
-                  <h2 className="text-lg font-bold mb-2">Título del evento</h2>
-                  <p className="text-sm text-gray-600">
-                    Descripción corta del evento
-                  </p>
+                  <h2 className="text-lg font-bold mb-2">{evento}</h2>
                 </div>
               ))}
             {activeTab === 'historia' && (
-              <div className="flex flex-col justify-center items-center w-full h-full">
+              <div className="flex flex-col justify-center items-center w-1/2 h-full">
                 <p className="text-sm text-gray-600 text-center">
                 {results.historia}
                 </p>
@@ -154,29 +151,16 @@ function page() {
                     alt={`Image ${index}`}
                     className="w-full h-32 object-cover rounded-lg mb-4"
                   />
-                  <h2 className="text-lg font-bold mb-2">Título del evento</h2>
-                  <p className="text-sm text-gray-600">
-                    Descripción corta del evento
-                  </p>
-                  <p className="text-sm font-medium text-gray-500">
-                    Fecha del evento
-                  </p>
                 </div>
               ))}
             {activeTab === 'redes' && (
               <div className="flex flex-col justify-center items-center w-full h-full">
                 <p className="text-sm text-gray-600 text-center">
-                {results.redes[0]}
-                </p>
-                <p className="text-sm text-gray-600 text-center">
-                {results.redes[1]}
-                </p>
-                <p className="text-sm text-gray-600 text-center">
-                {results.redes[2]}
+                {results.redes}
                 </p>
               </div>
             )}
-          </Link>
+          </div>
         )}
       </div>
     </div>
