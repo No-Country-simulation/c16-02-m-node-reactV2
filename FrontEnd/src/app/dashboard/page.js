@@ -22,27 +22,26 @@ function page() {
   useEffect(() => {
     dispatch(fetchEventos())
 
-     // Obtener el nombre de usuario desde localStorage
-     const name = localStorage.getItem('userName')
-     // console.log(name);
-     setUserName(name)
+    // Obtener el nombre de usuario desde localStorage
+    const name = localStorage.getItem('userName')
+    // console.log(name);
+    setUserName(name)
 
-      // Obtener el userId desde localStorage
-  const storedUserId = localStorage.getItem('userId')
-  setUserId(storedUserId)
+    // Obtener el userId desde localStorage
+    const storedUserId = localStorage.getItem('userId')
+    setUserId(storedUserId)
 
-         // Obtener la lista de eventos favoritos del usuario desde localStorage
+    // Obtener la lista de eventos favoritos del usuario desde localStorage
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
     setFavoritos(storedFavorites)
 
- 
-     // Agregar event listener para cerrar el menú cuando se hace click fuera de él
-     document.addEventListener('click', handleDocumentClick)
- 
-     return () => {
-       // Eliminar event listener cuando el componente se desmonta
-       document.removeEventListener('click', handleDocumentClick)
-     }
+    // Agregar event listener para cerrar el menú cuando se hace click fuera de él
+    document.addEventListener('click', handleDocumentClick)
+
+    return () => {
+      // Eliminar event listener cuando el componente se desmonta
+      document.removeEventListener('click', handleDocumentClick)
+    }
   }, [dispatch])
 
   const eventosFiltrados = events.filter((evento) => {
@@ -54,7 +53,7 @@ function page() {
   const handleTabChange = (tab) => {
     setActiveTab(tab)
   }
-  
+
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen)
   }
@@ -83,31 +82,55 @@ function page() {
     }
   }
 
-  const handleToggleFavorite = async (eventoId) => {
+  const handleToggleFavorite = async (eventId) => {
     try {
+      console.log('Evento ID enviado al backend:', eventId);
       // Verificar si el evento está en la lista de favoritos del usuario
-      const isFavorite = favoritos.includes(eventoId)
-      
+      const isFavorite = favoritos.includes(eventId)
+
       // Actualizar la lista de favoritos del usuario localmente
       const updatedFavorites = isFavorite
-        ? favoritos.filter((fav) => fav !== eventoId)
-        : [...favoritos, eventoId]
+        ? favoritos.filter((fav) => fav !== eventId)
+        : [...favoritos, eventId]
       setFavoritos(updatedFavorites)
       // Actualizar la lista de favoritos en localStorage
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
-      
-      // Enviar la solicitud al servidor para actualizar los favoritos del usuario
-      const response = await fetch(
-        `http://localhost:3001/user/${userId}/favorites`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ eventoId, isFavorite: !isFavorite }),
-        }
-      )
-      
+
+      // Log del cuerpo de la solicitud
+      // console.log(JSON.stringify({ eventId}))
+
+       // Enviar la solicitud al servidor para actualizar los favoritos del usuario
+       let response;
+       if (isFavorite) {
+         // Si el evento ya está en favoritos, eliminarlo
+         response = await fetch(
+           `http://localhost:3001/user/${userId}/favorites-delete`,
+           {
+             method: 'DELETE',
+             headers: {
+               'Content-Type': 'application/json',
+             },
+             body: JSON.stringify({ eventId }),
+           }
+         )
+       } else {
+         // Si el evento no está en favoritos, agregarlo
+         response = await fetch(
+           `http://localhost:3001/user/${userId}/favorites`,
+           {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+             },
+             body: JSON.stringify({ eventId }),
+           }
+         )
+       }
+
+      // console.log('Evento ID:', eventId);
+      // console.log('Favoritos:', updatedFavorites);
+      // console.log(typeof(updatedFavorites));
+
       if (!response.ok) {
         throw new Error('Error al enviar la solicitud al servidor')
       }
@@ -116,13 +139,13 @@ function page() {
     }
   }
 
-  // const handleToggleFavorite = (eventoId) => {
+  // const handleToggleFavorite = (eventId) => {
   //   // Verificar si el evento está en la lista de favoritos del usuario
-  //   const isFavorite = favoritos.includes(eventoId)
+  //   const isFavorite = favoritos.includes(eventId)
   //   // Actualizar la lista de favoritos del usuario
   //   const updatedFavorites = isFavorite
-  //     ? favoritos.filter((fav) => fav !== eventoId)
-  //     : [...favoritos, eventoId]
+  //     ? favoritos.filter((fav) => fav !== eventId)
+  //     : [...favoritos, eventId]
   //   setFavoritos(updatedFavorites)
   //   // Actualizar la lista de favoritos en localStorage
   //   localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
