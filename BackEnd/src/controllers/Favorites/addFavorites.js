@@ -3,7 +3,7 @@ const { User } = require("../../db");
 
 const addFavorite = async (req, res) => {
     const userId = req.params.id;
-    const  eventId  = req.body.eventId;
+    const eventId = req.body.eventId;
 
     try {
         // Buscar el usuario por su ID en la base de datos
@@ -23,7 +23,7 @@ const addFavorite = async (req, res) => {
         }
 
         // Agregar el ID del evento a la lista de favoritos del usuario
-        user.favoritos.push(eventId);
+        user.favoritos = [...user.favoritos, eventId]
 
         // Guardar los cambios en la base de datos
         await user.save();
