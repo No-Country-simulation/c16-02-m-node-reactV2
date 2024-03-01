@@ -10,51 +10,51 @@ import { useSelector, useDispatch } from 'react-redux'
 
 function page() {
   const [activeTab, setActiveTab] = useState('marzo')
-
-  const handleTabChange = (tab) => {
-    setActiveTab(tab)
-  }
-
+  const [favoritos, setFavoritos] = useState([])
+  const [userName, setUserName] = useState('')
+  const [userId, setUserId] = useState(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef(null)
   const dispatch = useDispatch()
-
   // Obtener la lista de eventos del estado de Redux
   const events = useSelector((state) => state.event.eventos)
 
   useEffect(() => {
     dispatch(fetchEventos())
+
+     // Obtener el nombre de usuario desde localStorage
+     const name = localStorage.getItem('userName')
+     // console.log(name);
+     setUserName(name)
+
+      // Obtener el userId desde localStorage
+  const storedUserId = localStorage.getItem('userId')
+  setUserId(storedUserId)
+
+         // Obtener la lista de eventos favoritos del usuario desde localStorage
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
+    setFavoritos(storedFavorites)
+
+ 
+     // Agregar event listener para cerrar el menú cuando se hace click fuera de él
+     document.addEventListener('click', handleDocumentClick)
+ 
+     return () => {
+       // Eliminar event listener cuando el componente se desmonta
+       document.removeEventListener('click', handleDocumentClick)
+     }
   }, [dispatch])
 
-  const [favoritos, setFavoritos] = useState(true)
-
-  const handleFav = () => {
-    setFavoritos(!favoritos)
-  }
-
-  // Filtrar eventos según el mes seleccionado
   const eventosFiltrados = events.filter((evento) => {
     const fecha = evento.fecha.substring(0, 7) // Obtiene el año y el mes (formato: "año-mes")
     const mesSeleccionado = activeTab === 'marzo' ? '2024-03' : '2024-04' // Cambia 'marzo' por 'abril' si es necesario
     return fecha === mesSeleccionado
   })
 
-  const [userName, setUserName] = useState('')
-  const [menuOpen, setMenuOpen] = useState(false)
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    // Obtener el nombre de usuario desde localStorage
-    const name = localStorage.getItem('userName')
-    setUserName(name)
-
-     // Agregar event listener para cerrar el menú cuando se hace click fuera de él
-     document.addEventListener('click', handleDocumentClick);
-
-     return () => {
-         // Eliminar event listener cuando el componente se desmonta
-         document.removeEventListener('click', handleDocumentClick);
-     };
-  }, [])
-
+  const handleTabChange = (tab) => {
+    setActiveTab(tab)
+  }
+  
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen)
   }
@@ -73,18 +73,73 @@ function page() {
 
   const handleDocumentClick = (event) => {
     // Verificar si el click se produjo dentro del menú o en el nombre de usuario
-    if (menuRef.current && !menuRef.current.contains(event.target) && event.target.textContent !== `Bienvenido, ${userName}`) {
-        // Cerrar el menú si el clic se produce fuera de él o en el nombre de usuario
-        setMenuOpen(false);
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      event.target.textContent !== `Bienvenido, ${userName}`
+    ) {
+      // Cerrar el menú si el clic se produce fuera de él o en el nombre de usuario
+      setMenuOpen(false)
     }
-};
+  }
+
+  const handleToggleFavorite = async (eventoId) => {
+    try {
+      // Verificar si el evento está en la lista de favoritos del usuario
+      const isFavorite = favoritos.includes(eventoId)
+      
+      // Actualizar la lista de favoritos del usuario localmente
+      const updatedFavorites = isFavorite
+        ? favoritos.filter((fav) => fav !== eventoId)
+        : [...favoritos, eventoId]
+      setFavoritos(updatedFavorites)
+      // Actualizar la lista de favoritos en localStorage
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
+      
+      // Enviar la solicitud al servidor para actualizar los favoritos del usuario
+      const response = await fetch(
+        `http://localhost:3001/user/${userId}/favorites`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ eventoId, isFavorite: !isFavorite }),
+        }
+      )
+      
+      if (!response.ok) {
+        throw new Error('Error al enviar la solicitud al servidor')
+      }
+    } catch (error) {
+      console.error('Error al actualizar los favoritos:', error)
+    }
+  }
+
+  // const handleToggleFavorite = (eventoId) => {
+  //   // Verificar si el evento está en la lista de favoritos del usuario
+  //   const isFavorite = favoritos.includes(eventoId)
+  //   // Actualizar la lista de favoritos del usuario
+  //   const updatedFavorites = isFavorite
+  //     ? favoritos.filter((fav) => fav !== eventoId)
+  //     : [...favoritos, eventoId]
+  //   setFavoritos(updatedFavorites)
+  //   // Actualizar la lista de favoritos en localStorage
+  //   localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
+  // }
 
   return (
     <div>
       <header className="flex justify-between items-center bg-gray-50 shadow-md p-4">
         <div className="flex justify-end items-center w-full" ref={menuRef}>
           <p>
-            Bienvenido, <span onClick={handleMenuToggle} className="cursor-pointer text-red-500 font-bold">{userName}</span>
+            Bienvenido,{' '}
+            <span
+              onClick={handleMenuToggle}
+              className="cursor-pointer text-red-500 font-bold"
+            >
+              {userName}
+            </span>
           </p>
           {menuOpen && (
             <div className="absolute right-0 top-10 mt-2 w-48 bg-white border rounded-md shadow-lg">
@@ -172,9 +227,9 @@ function page() {
                     </Link>
                     <button
                       className="mt-2 flex items-center text-gray-500"
-                      onClick={handleFav}
+                      onClick={() => handleToggleFavorite(evento.id)}
                     >
-                      {favoritos ? (
+                      {favoritos.includes(evento.id) ? (
                         <FaHeart className="w-4 h-4 text-red-500" />
                       ) : (
                         <FaRegHeart className="w-4 h-4 text-red-500" />
@@ -220,9 +275,9 @@ function page() {
                     </Link>
                     <button
                       className="mt-2 flex items-center text-gray-500"
-                      onClick={handleFav}
+                      onClick={() => handleToggleFavorite(evento.id)}
                     >
-                      {favoritos ? (
+                      {favoritos.includes(evento.id) ? (
                         <FaHeart className="w-4 h-4 text-red-500" />
                       ) : (
                         <FaRegHeart className="w-4 h-4 text-red-500" />
@@ -239,7 +294,7 @@ function page() {
           )}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
