@@ -40,10 +40,13 @@ const LoginPage = () => {
       if (response.ok) {
         // Si la respuesta es exitosa, obtener el nombre de usuario desde la respuest
         const data = await response.json();
-        const { nombre } = data.user;
+        const { nombre, favoritos, id } = data.user;
         // console.log({nombre});
         // Almacenar el nombre de usuario en localStorage
+        localStorage.setItem('userId', id);
+        // console.log(id);
         localStorage.setItem('userName', nombre);
+        localStorage.setItem('favorites', JSON.stringify(favoritos));
         // Si la respuesta es exitosa, redirigir al usuario a la página de dashboard
         window.location.href = '/dashboard';
       } else {
