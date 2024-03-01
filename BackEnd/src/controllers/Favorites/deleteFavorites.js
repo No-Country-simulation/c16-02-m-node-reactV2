@@ -3,25 +3,24 @@ const { User } = require("../../db");
 const removeFavorite = async (req, res) => {
     const userId = req.params.id;
     const eventId = req.body.eventId;
-    console.log("user", userId)
-    console.log("event", eventId);
 
     try {
-        // Buscar el usuario por su ID en la base de datos
         let user = await User.findByPk(userId);
 
-        // Verificar si el usuario fue encontrado
         if (!user) {
             return res.status(404).json({ msg: "Usuario no encontrado" });
         }
 
-        // Verificar si el evento está en la lista de favoritos del usuario
-        const index = user.favoritos.indexOf(eventId);
-        if (index === -1) {
+        const eventIndex = user.favoritos.indexOf(eventId);
+        if (eventIndex === -1) {
             return res.status(400).json({ msg: "El evento no está en la lista de favoritos del usuario" });
         }
 
-        user.favoritos.splice(index, 1);
+        // Crear un nuevo array de favoritos que excluya el evento a eliminar
+        const newFavorites = user.favoritos.filter(event => event !== eventId);
+
+        user.favoritos = newFavorites;
+
 
         await user.save();
 
