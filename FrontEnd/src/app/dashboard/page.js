@@ -84,7 +84,7 @@ function page() {
 
   const handleToggleFavorite = async (eventId) => {
     try {
-      console.log('Evento ID enviado al backend:', eventId);
+      // console.log('Evento ID enviado al backend:', eventId);
       // Verificar si el evento está en la lista de favoritos del usuario
       const isFavorite = favoritos.includes(eventId)
 
@@ -138,18 +138,6 @@ function page() {
       console.error('Error al actualizar los favoritos:', error)
     }
   }
-
-  // const handleToggleFavorite = (eventId) => {
-  //   // Verificar si el evento está en la lista de favoritos del usuario
-  //   const isFavorite = favoritos.includes(eventId)
-  //   // Actualizar la lista de favoritos del usuario
-  //   const updatedFavorites = isFavorite
-  //     ? favoritos.filter((fav) => fav !== eventId)
-  //     : [...favoritos, eventId]
-  //   setFavoritos(updatedFavorites)
-  //   // Actualizar la lista de favoritos en localStorage
-  //   localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
-  // }
 
   return (
     <div>
