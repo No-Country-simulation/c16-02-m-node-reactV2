@@ -105,9 +105,9 @@ function FavoritosPage() {
   return (
     <div>
       <DashboardHeader />
-      <h1 className="text-3xl font-bold mb-8 mt-8">Favoritos</h1>
+      <h1 className="text-3xl manrope-bold mb-8 mt-8">Favoritos</h1>
       {noFavoritos ? (
-        <p className="text-xl text-gray-500">
+        <p className="text-4xl inter-bold text-gray-500">
           Todavía no tienes eventos favoritos.
         </p>
       ) : (
@@ -129,7 +129,7 @@ function FavoritosPage() {
                       pathname: `/${evento.id}`,
                       query: { event: JSON.stringify(evento) },
                     }}>
-                <h2 className="text-lg font-bold mb-2">{evento.nombre}</h2>
+                <h2 className="text-lg inter-semibold mb-2">{evento.nombre}</h2>
                 </Link>
                 <button
                   className="mt-2 text-gray-500"
@@ -142,12 +142,11 @@ function FavoritosPage() {
                   )}
                 </button>
               </div>
-              <p className="text-sm text-gray-600">{evento.descripcion}</p>
+              <p className="text-sm inter-medium text-gray-600">{evento.descripcion}</p>
             </div>
           ))}
         </div>
       )}
-      <Footer />
     </div>
   )
 }

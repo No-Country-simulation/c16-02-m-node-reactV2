@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import Link from 'next/link'
+import './globals.css'
 
 export default function Home() {
   const carouselImages = [
@@ -28,23 +29,23 @@ export default function Home() {
   }, [currentIndex, carouselImages.length]);
 
   return (
-    <div>
+    <>
       <header className="bg-gray-50 shadow-md p-4">
         <nav className="flex justify-end">
-          <Link href="/login" className="bg-pink-500 text-gray-800 py-2 px-4 rounded-md mr-4">
+          <Link href="/login" className="bg-pink-300 bg-opacity-80 text-gray-800 py-2 px-4 rounded-lg mr-4 inter-regular">
             Iniciar Sesión
           </Link>
-          <Link href="/register" className="border-gray-800 border-solid border py-2 px-4 rounded-md">
+          <Link href="/register" className="border-gray-600 text-gray-800  border-solid border py-2 px-4 rounded-lg inter-regular">
             Registrarse
           </Link>
         </nav>
       </header>
       <main className="flex flex-col items-center justify-center h-screen">
         <div className="flex flex-col items-center">
-          <h1 className="text-4xl font-bold mb-4">Club Festival</h1>
+          <h1 className="text-6xl inter-regular mb-4">Club Festival</h1>
           <Image src="/logo.svg" alt="Imagen principal" width={250} height={250}/>
         </div>
-        <h2 className="text-center mb-8">¡Bienvenidos a nuestro sitio web en donde encontrarás todos tus festivales favoritos!</h2>
+        <h2 className="text-center mb-8 inter-medium text-xl">¡Bienvenidos a nuestro sitio web en donde encontrarás todos tus festivales favoritos!</h2>
         <div className="w-full overflow-hidden relative">
           <div className="w-1/4 h-full absolute z-50 left-0" style={{ background: 'linear-gradient(to right, #edf2f7 0%, rgba(255, 255, 255, 0) 100%)'}}></div>
           <div className="w-1/4 h-full absolute z-50 right-0" style={{ background: 'linear-gradient(to left, #edf2f7 0%, rgba(255, 255, 255, 0) 100%)'}}></div>
@@ -59,8 +60,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer/>
-    </div>
+    </>
   );
 }
 
