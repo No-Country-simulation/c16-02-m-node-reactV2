@@ -2,19 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2 family=Inter:wght@100..900&family=Manrope:wght@700&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  /* --background-end-rgb: 255, 255, 255; */
+  --background-rgb: 214, 219, 220;
+  --font-inter: 'Inter', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -23,11 +20,36 @@ body {
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.inter-regular {
+  font-family: var(--font-inter);
+  font-weight: 400;
+}
+
+.inter-medium {
+  font-family: var(--font-inter);
+  font-weight: 500;
+}
+
+.inter-semibold {
+  font-family: var(--font-inter);
+  font-weight: 600;
+}
+
+.inter-bold {
+  font-family: var(--font-inter);
+  font-weight: 700;
+}
+
+.manrope-bold {
+  font-family: var(--font-manrope);
+  font-weight: 700;
 }

@@ -143,7 +143,7 @@ function page() {
     <div>
       <header className="flex justify-between items-center bg-gray-50 shadow-md p-4">
         <div className="flex justify-end items-center w-full" ref={menuRef}>
-          <p>
+          <p className='inter-semibold'>
             Bienvenido,{' '}
             <span
               onClick={handleMenuToggle}
@@ -156,13 +156,13 @@ function page() {
             <div className="absolute right-0 top-10 mt-2 w-48 bg-white border rounded-md shadow-lg">
               <button
                 onClick={handleFavorites}
-                className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 w-full text-left inter-regular"
               >
                 Favoritos
               </button>
               <button
                 onClick={handleLogout}
-                className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 w-full text-left inter-regular"
               >
                 Cerrar Sesión
               </button>
@@ -171,12 +171,12 @@ function page() {
         </div>
       </header>
       <div className="flex flex-col items-start p-8">
-        <h1 className="text-3xl font-bold mb-8">Próximos festivales</h1>
+        <h1 className="text-3xl manrope-bold mb-8">Próximos festivales</h1>
 
         <div className="w-full bg-gray-200 rounded-lg flex justify-center items-center">
           <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
             <ul className="flex flex-wrap -mb-px">
-              <li className="me-2 cursor-pointer">
+              <li className="me-2 cursor-pointer manrope-bold">
                 <a
                   className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-red-400 hover:border-red-300 ${
                     activeTab === 'marzo'
@@ -188,7 +188,7 @@ function page() {
                   Marzo
                 </a>
               </li>
-              <li className="me-2 cursor-pointer">
+              <li className="me-2 cursor-pointer manrope-bold">
                 <a
                   className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-red-400 hover:border-red-300 ${
                     activeTab === 'abril'
@@ -232,7 +232,7 @@ function page() {
                         query: { event: JSON.stringify(evento) },
                       }}
                     >
-                      <h2 className="text-lg font-bold mb-2">
+                      <h2 className="text-lg inter-semibold mb-2">
                         {evento.nombre}
                       </h2>
                     </Link>
@@ -247,8 +247,8 @@ function page() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600">{evento.descripcion}</p>
-                  <p className="text-sm font-medium text-gray-500">
+                  <p className="text-sm inter-medium text-gray-600">{evento.descripcion}</p>
+                  <p className="text-sm inter-bold text-gray-500 mt-3">
                     Fecha: {new Date(evento.fecha).toISOString().split('T')[0]}
                   </p>
                 </div>
@@ -280,7 +280,7 @@ function page() {
                         query: { event: JSON.stringify(evento) },
                       }}
                     >
-                      <h2 className="text-lg font-bold mb-2">
+                      <h2 className="text-lg inter-semibold mb-2">
                         {evento.nombre}
                       </h2>
                     </Link>
@@ -295,8 +295,8 @@ function page() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600">{evento.descripcion}</p>
-                  <p className="text-sm font-medium text-gray-500">
+                  <p className="text-sm inter-medium text-gray-600">{evento.descripcion}</p>
+                  <p className="text-sm inter-bold text-gray-500 mt-3">
                     Fecha: {new Date(evento.fecha).toISOString().split('T')[0]}
                   </p>
                 </div>
@@ -305,7 +305,6 @@ function page() {
           )}
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

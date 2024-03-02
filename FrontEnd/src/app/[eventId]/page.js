@@ -99,7 +99,7 @@ function page() {
       <DashboardHeader />
       <div className="flex flex-col items-center mt-5">
         <div className="flex justify-between w-4/5 mb-5">
-          <h1 className="text-3xl font-bold mb-4">{results.nombre}</h1>
+          <h1 className="text-3xl manrope-bold mb-4">{results.nombre}</h1>
           <button
             className="mt-2 flex items-center text-gray-500"
             onClick={handleToggleFavorite}
@@ -121,19 +121,13 @@ function page() {
           />
         </div>
         <div className="mt-8 text-lg text-gray-700">
-          <p>{results.descripcion}</p>
+          <p className='inter-medium'>{results.descripcion}</p>
         </div>
-        {/* <div className="mt-8">
-          <audio controls className="w-full max-w-4xl">
-            <source src="/audio-del-evento.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-        </div> */}
       </div>
       <div className="w-full bg-gray-200 rounded-lg flex justify-center items-center mt-10">
         <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
           <ul className="flex flex-wrap -mb-px">
-            <li className="me-2 cursor-pointer">
+            <li className="me-2 cursor-pointer manrope-bold">
               <a
                 className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-red-400 hover:border-red-300 ${
                   activeTab === 'integrantes'
@@ -145,7 +139,7 @@ function page() {
                 Integrantes
               </a>
             </li>
-            <li className="me-2 cursor-pointer">
+            <li className="me-2 cursor-pointer manrope-bold">
               <a
                 className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-red-400 hover:border-red-300 ${
                   activeTab === 'historia'
@@ -157,7 +151,7 @@ function page() {
                 Historia
               </a>
             </li>
-            <li className="me-2 cursor-pointer">
+            <li className="me-2 cursor-pointer manrope-bold">
               <a
                 className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-red-400 hover:border-red-300 ${
                   activeTab === 'imagenes'
@@ -169,7 +163,7 @@ function page() {
                 Imágenes
               </a>
             </li>
-            <li className="me-2 cursor-pointer">
+            <li className="me-2 cursor-pointer manrope-bold">
               <a
                 className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-red-400 hover:border-red-300 ${
                   activeTab === 'redes'
@@ -200,12 +194,12 @@ function page() {
                     width={200}
                     height={200}
                   />
-                  <h2 className="text-lg font-bold mb-2">{evento}</h2>
+                  <h2 className="text-lg inter-semibold mb-2">{evento}</h2>
                 </div>
               ))}
             {activeTab === 'historia' && (
               <div className="flex flex-col justify-center items-center w-1/2 h-full">
-                <p className="text-sm text-gray-600 text-center">
+                <p className="text-sm text-gray-600 inter-medium text-center">
                   {results.historia}
                 </p>
               </div>
@@ -225,7 +219,7 @@ function page() {
               ))}
             {activeTab === 'redes' && (
               <div className="flex flex-col justify-center items-center w-full h-full">
-                <p className="text-sm text-gray-600 text-center">
+                <p className="text-sm text-gray-600 text-center inter-medium">
                   {results.redes}
                 </p>
               </div>
@@ -233,7 +227,6 @@ function page() {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   )
 }

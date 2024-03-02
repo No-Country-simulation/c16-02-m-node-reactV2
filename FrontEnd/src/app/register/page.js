@@ -100,7 +100,7 @@ const RegisterPage = () => {
 
 
   return (
-    <div>
+    <>
       <Header/>
       <div className="flex justify-center items-center h-screen">
       <div className="w-1/2 p-4">
@@ -116,45 +116,45 @@ const RegisterPage = () => {
       </div>
 
       <div className="w-1/2 p-4 flex flex-col items-center">
-        <h2 className="text-4xl font-bold mb-4">Club Festival</h2>
+        <h2 className="text-6xl inter-regular mb-4">Club Festival</h2>
         <Image src="/logo.svg" alt="Logo" className="mb-4" width={250} height={250}/>
 
         <form className="w-full max-w-sm flex flex-col items-center" onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="nombre" className="block text-gray-700 font-bold mb-2">Nombre</label>
-            <input required type="text" id="nombre" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
+            <label htmlFor="nombre" className="block text-gray-700 mb-2 inter-semibold">Nombre</label>
+            <input required type="text" id="nombre" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md inter-regular" />
           </div>
           <div className="mb-4">
-            <label htmlFor="apellido" className="block text-gray-700 font-bold mb-2">Apellido</label>
-            <input required type="text" id="apellido" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
+            <label htmlFor="apellido" className="block text-gray-700 font-bold mb-2 inter-semibold">Apellido</label>
+            <input required type="text" id="apellido" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md inter-regular" />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
-            <input required type="email" id="email" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md" />
+            <label htmlFor="email" className="block text-gray-700 font-bold mb-2 inter-semibold">Email</label>
+            <input required type="email" id="email" className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md inter-regular" />
           </div>
           <div className="mb-4 relative">
-            <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Contraseña</label>
+            <label htmlFor="password" className="block text-gray-700 font-bold mb-2 inter-semibold">Contraseña</label>
             <input
               required
               type={showPassword ? 'text' : 'password'}
               id="password"
-              className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md pr-10"
+              className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md pr-10 inter-regular"
             />
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute top-1/2 right-2 transform translate-y-1/2 text-gray-500 focus:outline-none"
+              className="absolute top-1/2 right-2 transform translate-y-1/2 text-gray-500 focus:outline-none inter-regular"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <div className="mb-4 relative">
-            <label htmlFor="confirm-password" className="block text-gray-700 font-bold mb-2">Confirmar Contraseña</label>
+            <label htmlFor="confirm-password" className="block text-gray-700 font-bold mb-2 inter-semibold">Confirmar Contraseña</label>
             <input
               required
               type={showConfirmPassword ? 'text' : 'password'}
               id="confirm-password"
-              className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md pr-10"
+              className="w-full md:w-96 border border-gray-400 px-4 py-2 rounded-md pr-10 inter-regular"
             />
             <button
               type="button"
@@ -166,21 +166,21 @@ const RegisterPage = () => {
           </div>
           <div className="mb-4 flex items-center">
             <input required type="checkbox" id="terms" className="mr-2" />
-            <label htmlFor="terms" className="text-gray-700">
+            <label htmlFor="terms" className="text-gray-700 inter-medium">
               He leído y acepto los&nbsp;
-               <Link href="#"  onClick={handleTermsClick} className="text-blue-500">
+               <Link href="#"  onClick={handleTermsClick} className="text-blue-500 inter-semibold">
                  términos y condiciones
               </Link>.
               {showTermsModal && <TermsAndConditionsModal isOpen={true} onClose={handleCloseTermsModal} />}
             </label>
           </div>
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+          <button type="submit" className="bg-pink-300 bg-opacity-80 text-gray-800 py-2 px-4 rounded-lg mr-4 inter-semibold" >
             Registrarse
           </button>
         </form>
       </div>
     </div>
-    </div>
+    </>
   );
 };
 
