@@ -15,9 +15,11 @@ const sequelize = new Sequelize(
         native: false,
         dialectOptions: {
             ssl: {
-                require: true
+                require: true,
+                rejectUnauthorized: false // Esto permite que el cliente se conecte sin rechazar la conexión por certificados autofirmados.
             }
         }
+        
     }
 )
 
