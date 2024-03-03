@@ -9,6 +9,7 @@ const sequelize = new Sequelize(
     {
         logging: false,
         native: false,
+        dialectModule: pg,
     }
 )
 
