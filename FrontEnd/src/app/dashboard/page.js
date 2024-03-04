@@ -99,33 +99,33 @@ function page() {
       // Log del cuerpo de la solicitud
       // console.log(JSON.stringify({ eventId}))
 
-       // Enviar la solicitud al servidor para actualizar los favoritos del usuario
-       let response;
-       if (isFavorite) {
-         // Si el evento ya está en favoritos, eliminarlo
-         response = await fetch(
-           `http://localhost:3001/user/${userId}/favorites-delete`,
-           {
-             method: 'DELETE',
-             headers: {
-               'Content-Type': 'application/json',
-             },
-             body: JSON.stringify({ eventId }),
-           }
-         )
-       } else {
-         // Si el evento no está en favoritos, agregarlo
-         response = await fetch(
-           `http://localhost:3001/user/${userId}/favorites`,
-           {
-             method: 'POST',
-             headers: {
-               'Content-Type': 'application/json',
-             },
-             body: JSON.stringify({ eventId }),
-           }
-         )
-       }
+      // Enviar la solicitud al servidor para actualizar los favoritos del usuario
+      let response
+      if (isFavorite) {
+        // Si el evento ya está en favoritos, eliminarlo
+        response = await fetch(
+          `https://c16-02-m-node-reactv2.onrender.com/user/${userId}/favorites-delete`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ eventId }),
+          }
+        )
+      } else {
+        // Si el evento no está en favoritos, agregarlo
+        response = await fetch(
+          `https://c16-02-m-node-reactv2.onrender.com/user/${userId}/favorites`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ eventId }),
+          }
+        )
+      }
 
       // console.log('Evento ID:', eventId);
       // console.log('Favoritos:', updatedFavorites);
@@ -143,7 +143,7 @@ function page() {
     <div>
       <header className="flex justify-between items-center bg-gray-50 shadow-md p-4">
         <div className="flex justify-end items-center w-full" ref={menuRef}>
-          <p className='inter-semibold'>
+          <p className="inter-semibold">
             Bienvenido,{' '}
             <span
               onClick={handleMenuToggle}
@@ -247,7 +247,9 @@ function page() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm inter-medium text-gray-600">{evento.descripcion}</p>
+                  <p className="text-sm inter-medium text-gray-600">
+                    {evento.descripcion}
+                  </p>
                   <p className="text-sm inter-bold text-gray-500 mt-3">
                     Fecha: {new Date(evento.fecha).toISOString().split('T')[0]}
                   </p>
@@ -295,7 +297,9 @@ function page() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm inter-medium text-gray-600">{evento.descripcion}</p>
+                  <p className="text-sm inter-medium text-gray-600">
+                    {evento.descripcion}
+                  </p>
                   <p className="text-sm inter-bold text-gray-500 mt-3">
                     Fecha: {new Date(evento.fecha).toISOString().split('T')[0]}
                   </p>

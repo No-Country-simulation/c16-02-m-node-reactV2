@@ -22,7 +22,7 @@ function FavoritosPage() {
     setFavoritos(storedFavorites)
 
     // Realizar una solicitud al backend para obtener la información de los eventos favoritos
-    fetch('http://localhost:3001/event')
+    fetch('https://c16-02-m-node-reactv2.onrender.com/event')
       .then((response) => response.json())
       .then((data) => {
         // Filtrar los eventos que coinciden con los IDs de favoritos del usuario
@@ -50,7 +50,7 @@ function FavoritosPage() {
       if (isFavorite) {
         // Si el evento ya está en favoritos, eliminarlo
         response = await fetch(
-          `http://localhost:3001/user/${userId}/favorites-delete`,
+          `https://c16-02-m-node-reactv2.onrender.com/user/${userId}/favorites-delete`,
           {
             method: 'DELETE',
             headers: {
@@ -62,7 +62,7 @@ function FavoritosPage() {
       } else {
         // Si el evento no está en favoritos, agregarlo
         response = await fetch(
-          `http://localhost:3001/user/${userId}/favorites`,
+          `https://c16-02-m-node-reactv2.onrender.com/user/${userId}/favorites`,
           {
             method: 'POST',
             headers: {
@@ -114,22 +114,28 @@ function FavoritosPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {eventos.map((evento) => (
             <div key={evento.id} className="bg-white p-6 rounded-lg shadow-md">
-              <Link   href={{
-                      pathname: `/${evento.id}`,
-                      query: { event: JSON.stringify(evento) },
-                    }}>
-              <img
-                src="/la-beriso.png"
-                alt={evento.nombre}
-                className="w-full h-32 object-cover rounded-lg mb-4"
-              />
+              <Link
+                href={{
+                  pathname: `/${evento.id}`,
+                  query: { event: JSON.stringify(evento) },
+                }}
+              >
+                <img
+                  src="/la-beriso.png"
+                  alt={evento.nombre}
+                  className="w-full h-32 object-cover rounded-lg mb-4"
+                />
               </Link>
               <div className="flex justify-between items-baseline">
-                <Link    href={{
-                      pathname: `/${evento.id}`,
-                      query: { event: JSON.stringify(evento) },
-                    }}>
-                <h2 className="text-lg inter-semibold mb-2">{evento.nombre}</h2>
+                <Link
+                  href={{
+                    pathname: `/${evento.id}`,
+                    query: { event: JSON.stringify(evento) },
+                  }}
+                >
+                  <h2 className="text-lg inter-semibold mb-2">
+                    {evento.nombre}
+                  </h2>
                 </Link>
                 <button
                   className="mt-2 text-gray-500"
@@ -142,7 +148,9 @@ function FavoritosPage() {
                   )}
                 </button>
               </div>
-              <p className="text-sm inter-medium text-gray-600">{evento.descripcion}</p>
+              <p className="text-sm inter-medium text-gray-600">
+                {evento.descripcion}
+              </p>
             </div>
           ))}
         </div>
