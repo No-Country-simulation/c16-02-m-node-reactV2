@@ -38,7 +38,6 @@ function page() {
   // console.log(results);
   // console.log(results.id);
 
-
   const handleToggleFavorite = async () => {
     try {
       console.log('Evento ID enviado al backend:', results.id)
@@ -50,7 +49,7 @@ function page() {
       if (isFavorite) {
         // Si el evento ya está en favoritos, eliminarlo
         response = await fetch(
-          `http://localhost:3001/user/${userId}/favorites-delete`,
+          `https://c16-02-m-node-reactv2.onrender.com/user/${userId}/favorites-delete`,
           {
             method: 'DELETE',
             headers: {
@@ -62,7 +61,7 @@ function page() {
       } else {
         // Si el evento no está en favoritos, agregarlo
         response = await fetch(
-          `http://localhost:3001/user/${userId}/favorites`,
+          `https://c16-02-m-node-reactv2.onrender.com/user/${userId}/favorites`,
           {
             method: 'POST',
             headers: {
@@ -121,7 +120,7 @@ function page() {
           />
         </div>
         <div className="mt-8 text-lg text-gray-700">
-          <p className='inter-medium'>{results.descripcion}</p>
+          <p className="inter-medium">{results.descripcion}</p>
         </div>
       </div>
       <div className="w-full bg-gray-200 rounded-lg flex justify-center items-center mt-10">
