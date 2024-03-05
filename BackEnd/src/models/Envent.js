@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     imagen: {
-      type: DataTypes.STRING(1000),
+      type: DataTypes.ARRAY(DataTypes.STRING(1000)),
       allowNull: true,
     },
     historia: {
