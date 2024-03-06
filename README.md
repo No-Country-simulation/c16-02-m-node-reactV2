@@ -36,7 +36,6 @@ Proporciona una API simplificada para crear acciones y reducers, y también incl
 - Fecha y lugar de cuándo y dónde tocan los artistas y bandas.
 - Información de los artistas y bandas.
 - Guardar eventos.
-- Reproducir canciones más escuchadas de los artistas y las bandas.
 
 <h2><b>Integrantes del proyecto</b></h2>
 <div align='center'>
