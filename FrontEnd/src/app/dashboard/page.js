@@ -203,7 +203,7 @@ function page() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 w-full bg-red-200 h-96 rounded-lg flex justify-center items-center">
+        <div className="mt-8 w-full bg-red-200 h-[500px] rounded-lg flex justify-center items-center">
           {activeTab === 'marzo' ? (
             <div href={'/festival'} className="flex justify-center space-x-4">
               {eventosFiltrados.map((evento) => (
@@ -218,9 +218,9 @@ function page() {
                     }}
                   >
                     <Image
-                      src={'/la-beriso.png'}
+                      src={evento.imagen[0]}
                       alt={`${evento.nombre}`}
-                      className="w-full h-32 object-cover rounded-lg mb-4"
+                      className="w-full object-cover rounded-lg mb-4"
                       width={200}
                       height={200}
                     />
@@ -270,9 +270,9 @@ function page() {
                     }}
                   >
                     <img
-                      src={'/la-beriso.png'}
-                      alt={`Image ${evento.id}`}
-                      className="w-full h-32 object-cover rounded-lg mb-4"
+                      src={evento.imagen[0]}
+                      alt={`Image ${evento.nombre}`}
+                      className="w-full object-cover rounded-lg mb-4"
                     />
                   </Link>
                   <div className="flex justify-between items-baseline">
