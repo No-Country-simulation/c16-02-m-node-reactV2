@@ -7,7 +7,7 @@ const dataJson = require("./src/helpers/data.json")
 const PORT = 3001
 
 conn.sync({
-    force: true,
+    force: false,
 }).then(() => {
     createEventJson(dataJson)
         .then(() => {
