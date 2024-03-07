@@ -98,7 +98,7 @@ function page() {
       <DashboardHeader />
       <div className="flex flex-col items-center mt-5">
         <div className="flex justify-between w-4/5 mb-5">
-          <h1 className="text-3xl manrope-bold mb-4">{results.nombre}</h1>
+          <h1 className="text-3xl manrope-bold mb-4">{results.titulo}</h1>
           <button
             className="mt-2 flex items-center text-gray-500"
             onClick={handleToggleFavorite}
@@ -112,7 +112,7 @@ function page() {
         </div>
         <div className="flex items-center justify-center w-full h-full">
           <Image
-            src="/la-beriso.png"
+            src={results.imagen[0]}
             alt="Imagen del evento"
             className="w-full max-w-xl h-auto rounded-lg shadow-md"
             width={700}
@@ -177,7 +177,7 @@ function page() {
           </ul>
         </div>
       </div>
-      <div className="mt-8 w-full bg-red-200 h-96 rounded-lg flex justify-center items-center">
+      <div className="mt-8 w-full bg-red-200 h-[500px] rounded-lg flex justify-center items-center">
         {activeTab && (
           <div className="flex justify-center space-x-4">
             {activeTab === 'integrantes' &&
@@ -187,7 +187,7 @@ function page() {
                   className="bg-white w-1/4 p-4 rounded-lg shadow-md"
                 >
                   <Image
-                    src={`/la-beriso.png`}
+                    src={results.imagen[0]}
                     alt={`Image ${evento}`}
                     className="w-full h-32 object-cover rounded-lg mb-4"
                     width={200}
@@ -197,30 +197,40 @@ function page() {
                 </div>
               ))}
             {activeTab === 'historia' && (
-              <div className="flex flex-col justify-center items-center w-1/2 h-full">
+              <div className="flex flex-col justify-center items-center w-full h-full">
                 <p className="text-sm text-gray-600 inter-medium text-center">
                   {results.historia}
                 </p>
               </div>
             )}
-            {activeTab === 'imagenes' &&
-              [10, 20, 30, 40].map((index) => (
-                <div
-                  key={index}
-                  className="bg-white w-1/4 p-4 rounded-lg shadow-md"
-                >
-                  <img
-                    src={`/los-pericos.png`}
-                    alt={`Image ${index}`}
-                    className="w-full h-32 object-cover rounded-lg mb-4"
-                  />
-                </div>
-              ))}
+            {activeTab === 'imagenes' && (
+              <div className='grid grid-cols-6 gap-4'>
+                {results.imagen.map((index, img) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-md"
+                  >
+                    <img
+                      src={img}
+                      alt={`Image ${results.nombre}`}
+                      className="w-full h-32 object-cover rounded-lg mb-4"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
             {activeTab === 'redes' && (
-              <div className="flex flex-col justify-center items-center w-full h-full">
-                <p className="text-sm text-gray-600 text-center inter-medium">
-                  {results.redes}
-                </p>
+              <div className="flex flex-col items-center">
+                <p className="manrope-bold  mb-4">Redes sociales de la banda</p>
+                <ul className="flex flex-col">
+                  {results.redes.map((red) => (
+                    <li className="text-sm text-gray-600 text-center inter-medium mb-1">
+                      <Link href={red} target="/blanck">
+                        {red}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </div>
