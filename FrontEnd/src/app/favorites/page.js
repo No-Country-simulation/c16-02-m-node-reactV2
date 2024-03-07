@@ -121,7 +121,7 @@ function FavoritosPage() {
                 }}
               >
                 <img
-                  src="/la-beriso.png"
+                  src={evento.imagen[0]}
                   alt={evento.nombre}
                   className="w-full h-32 object-cover rounded-lg mb-4"
                 />

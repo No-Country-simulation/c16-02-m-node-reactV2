@@ -98,7 +98,7 @@ function page() {
       <DashboardHeader />
       <div className="flex flex-col items-center mt-5">
         <div className="flex justify-between w-4/5 mb-5">
-          <h1 className="text-3xl manrope-bold mb-4">{results.titulo}</h1>
+          <h1 className="text-3xl manrope-bold mb-4">{results.nombre}</h1>
           <button
             className="mt-2 flex items-center text-gray-500"
             onClick={handleToggleFavorite}
@@ -184,7 +184,7 @@ function page() {
               results.integrantes.map((evento, index) => (
                 <div
                   key={index}
-                  className="bg-white w-1/4 p-4 rounded-lg shadow-md"
+                  className="bg-white p-4 rounded-lg shadow-md"
                 >
                   <Image
                     src={results.imagen[0]}
@@ -205,15 +205,15 @@ function page() {
             )}
             {activeTab === 'imagenes' && (
               <div className='grid grid-cols-6 gap-4'>
-                {results.imagen.map((index, img) => (
+                {results.imagen.map((img) => (
                   <div
-                    key={index}
-                    className="bg-white rounded-lg shadow-md"
+                    key={img}
+                    className="bg-white rounded-lg shadow-md flex justify-center items-center w-50 h-60"
                   >
                     <img
                       src={img}
-                      alt={`Image ${results.nombre}`}
-                      className="w-full h-32 object-cover rounded-lg mb-4"
+                      alt={`Image ${img}`}
+                      className="w-[80%] object-cover rounded-lg mb-4"
                     />
                   </div>
                 ))}
